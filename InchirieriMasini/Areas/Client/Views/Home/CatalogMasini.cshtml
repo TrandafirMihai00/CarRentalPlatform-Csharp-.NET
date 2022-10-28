@@ -1,0 +1,112 @@
+﻿@model IEnumerable<InchirieriMasini.Models.Masina>
+
+
+
+<div class="row py-5 ">
+    <div class="col-2 px-3 ms-3">
+        <div class="card p-3">
+            <h5>Marca</h5>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Audi
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Volkswagen
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Hyundai
+                </label>
+            </div>
+            <hr />
+
+            <h5>Culoare</h5>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Negru
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Alb
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Gri
+                </label>
+            </div>
+            <hr />
+            <h5>Tip combustibil</h5>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Benzina
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Diesel
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Electric
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Hibrid
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="row col-10">
+        @foreach (var masina in Model)
+        {
+            <div class="col-4 mb-4 text-center d-flex justify-content-center align-content-center">
+                <div class="card" style="width: 23rem;">
+                    <div id="carouselExampleSlidesOnly" class="carousel slide" style="min-height:250px" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="@masina.ImagineMasina1" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="@masina.ImagineMasina2" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="@masina.ImagineMasina3" class="d-block w-100" alt="...">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title text-center fs-4 fw-bold" style="min-height:50px">@masina.AnFabricatie @masina.ModelMasina @masina.MarcaMasina.DenumireMarca </h4>
+                        <p class="card-text text-center">@masina.TarifPeZi RON / Zi</p>
+                        <hr>
+                        <div class="row mb-3">
+                            <div class="col-4 fs-6"><img style="width:28px" src="~/Imagini/Icons/Schimbator.png" /> @masina.TipCutieViteza</div>
+                            <div class="col-4 fs-6"><img style="width:28px" src="~/Imagini/Icons/Usa.png" /> @masina.NumarUsi Usi</div>
+                            <div class="col-4 fs-6"><img style="width:28px" src="~/Imagini/Icons/Combustibil.png" /> @masina.TipCombustibil</div>
+                        </div>
+                        <div class="text-center">
+                            <a asp-area="Client" asp-controller="Home" asp-action="Masina" asp-route-IdMasina=@masina.IdMasina class="btn btn-primary ">Inchiriaza acum</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

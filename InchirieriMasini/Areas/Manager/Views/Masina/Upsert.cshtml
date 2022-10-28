@@ -1,0 +1,154 @@
+﻿@model InchirieriMasini.Models.ViewModels.MasinaVM
+
+<div class="container">
+<form method="post" asp-action="Upsert" enctype="multipart/form-data" class="my-5">
+    <input asp-for="Masina.IdMasina" hidden />
+    <input asp-for="Masina.ImagineMasina1" hidden/>
+    <input asp-for="Masina.ImagineMasina2" hidden/>
+    <input asp-for="Masina.ImagineMasina3" hidden/> 
+    <div class=" p-3 mr-4 row">
+        <div class="row pb-2">
+            <h2 class="text-primary">@(Model.Masina.IdMasina!=0?"Modifica": "Adauga") masina</h2>
+            <hr />
+        </div>
+
+        <div class="mb-3 col-6">
+            <label asp-for="Masina.ModelMasina"></label>
+            <input asp-for="Masina.ModelMasina" class="form-control"/>
+            <span asp-validation-for="Masina.ModelMasina" class="text-danger"></span>
+        </div>
+        
+        
+        <div class="mb-3 col-6">
+            <label asp-for="Masina.NumarInmatriculare"></label>
+            <input asp-for="Masina.NumarInmatriculare" class="form-control"/>
+            <span asp-validation-for="Masina.NumarInmatriculare" class="text-danger"></span>
+        </div>
+       
+       
+        <div class="mb-3 col-6">
+            <label asp-for="Masina.MasaTotala"></label>
+            <input asp-for="Masina.MasaTotala" class="form-control"/>
+            <span asp-validation-for="Masina.MasaTotala" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3 col-6">
+            <label asp-for="Masina.TarifPeZi"></label>
+            <input asp-for="Masina.TarifPeZi" class="form-control"/>
+             <span asp-validation-for="Masina.TarifPeZi" class="text-danger"></span>
+             </div>
+        <div class="mb-3 col-4">
+            <label asp-for="Masina.DisponibilitateMasina"></label>
+            <select asp-for="Masina.DisponibilitateMasina" class="form-select">
+                <option value="True">Disponibila</option>
+                <option value="False">Indisponibila</option>
+            </select>
+            <span asp-validation-for="Masina.DisponibilitateMasina" class="text-danger"></span>
+        </div>
+           
+        <div class="mb-3 col-4">
+            <label asp-for="Masina.TipCombustibil"></label>
+            <select asp-for="Masina.TipCombustibil" class="form-select">
+                <option value="Benzina">Benzina</option>
+                <option value="Diesel">Diesel</option>
+                <option value="Hibrid">Hibrid</option>
+                <option value="Electic">Electric</option>
+            </select>
+            <span asp-validation-for="Masina.TipCombustibil" class="text-danger"></span>
+        </div>
+        <div class="mb-3 col-4">
+            <label asp-for="Masina.TipCutieViteza"></label>
+            <select asp-for="Masina.TipCutieViteza" class="form-select">
+                <option value="Manuala">Manuala</option>
+                <option value="Automata">Automata</option>
+            </select>
+            <span asp-validation-for="Masina.TipCutieViteza" class="text-danger"></span>
+        </div>
+        
+        <div class="mb-3 col-4">
+            <label asp-for="Masina.NumarUsi"></label>
+            <select asp-for="Masina.NumarUsi" class="form-select">
+                <option value="2">2</option>
+                <option value="4">4</option>
+            </select>
+            <span asp-validation-for="Masina.NumarUsi" class="text-danger"></span>
+        </div>
+        <div class="mb-3 col-4">
+            <label asp-for="Masina.AnFabricatie"></label>
+            <input asp-for="Masina.AnFabricatie" class="form-control"/>
+            <span asp-validation-for="Masina.AnFabricatie" class="text-danger"></span>
+        </div>
+        <div class="mb-3 col-4">
+            <label asp-for="Masina.IdMarca"></label>
+            <select asp-for="Masina.IdMarca" asp-items="@Model.ListaMarci" class="form-select">
+            <option disabled selected>--Selectati Marca--</option>
+            </select>
+            <span asp-validation-for="Masina.IdMarca" class="text-danger"></span>
+        </div>
+        <div class="row">
+        <div class="mb-3 col-8">
+            <label asp-for="Masina.ImagineMasina1"></label>
+            <input type="file" id="uploadBox1" name="file1" class="form-control"/>
+        </div>
+        <div class="col-4">
+            <img src="@Model.Masina.ImagineMasina1" style="width:100%" />
+        </div>
+        </div>
+
+        <div class="row">
+        <div class="mb-3 col-8">
+            <label asp-for="Masina.ImagineMasina2"></label>
+            <input type="file" id="uploadBox2" name="file2" class="form-control"/>
+        </div>
+        <div class="col-4">
+            <img src="@Model.Masina.ImagineMasina2" style="width:100%" />
+        </div>
+        </div>
+
+        <div class="row">
+        <div class="mb-3 col-8">
+            <label asp-for="Masina.ImagineMasina3"></label>
+            <input type="file" id="uploadBox3" name="file3" class="form-control"/>
+        </div>
+        <div class="col-4">
+            <img src="@Model.Masina.ImagineMasina3" style="width:100%" />
+        </div>
+        </div>
+
+        <div class="col-12 text-end mt-5">
+            @if(Model.Masina.IdMasina!=0){
+        <button type="submit"  class="btn btn-primary col-2 ms-3 mx-4" style="width:150px">Modifica</button>
+        }else{
+            <button type="submit" onclick="return ValideazaInput()" class="btn btn-primary col-2 ms-3 mx-4" style="width:150px">Adauga</button>
+        }
+        <a asp-controller="Masina" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Inapoi
+        </a>
+        </div>
+    </div>
+</form>
+</div>
+
+@section Scripts{
+    @{
+    <partial name="_ValidationScriptsPartial"/>
+    }
+    <script>
+        function ValideazaInput(){
+        if(document.getElementById("uploadBox1").value=="" || document.getElementById("uploadBox2").value=="" || document.getElementById("uploadBox3").value==""){
+            Swal.fire({
+              icon: 'error',
+              title: 'Ups...',
+              text: 'Ati uitat sa incarcati poza!',
+            });
+            return false;
+        }
+        return true;
+    }
+    </script>
+}
+
+
+
+
+

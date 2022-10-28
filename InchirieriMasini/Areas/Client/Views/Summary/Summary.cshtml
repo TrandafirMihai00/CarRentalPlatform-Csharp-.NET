@@ -1,0 +1,126 @@
+﻿@model InchirieriMasini.Models.ViewModels.DateComandaVM
+@using Microsoft.Extensions.Options
+@inject IOptions<InchirieriMasini.Utility.StripeSettings> Stripe
+<form method="post">
+	<input asp-for="@Model.Cos.Masina.IdMasina" hidden />
+	<input asp-for="@Model.Cos.IdCos" hidden />
+	<div class="container">
+	<div class="row">
+		<div class="col-9">
+			<div class="card m-2 p-5">
+				<div class="row">
+					<div class="col-12">
+						<h3>@Model.Cos.Masina.MarcaMasina.DenumireMarca @Model.Cos.Masina.ModelMasina</h3>
+					</div>
+					<div class=" row col-12 mt-2 justify-content-between">
+						<img class="col-4" src=@Model.Cos.Masina.ImagineMasina1 style="width:400px"/>
+						<div class="col-4">
+							<div class="mt-2" ><img src="~/Imagini/Icons/Usa.png" style="width:20px"/> Numar usi: @Model.Cos.Masina.NumarUsi </div>
+							<div class="mt-2" ><img src="~/Imagini/Icons/Schimbator.png" style="width:20px" /> Tip cutie viteza: @Model.Cos.Masina.TipCutieViteza </div>
+							<div class="mt-2" ><img src="~/Imagini/Icons/Combustibil.png" style="width:20px" /> Combustibil: @Model.Cos.Masina.TipCombustibil </div>
+							<div class="mt-2" ><img src="~/Imagini/Icons/Weight.png" style="width:20px" /> Masa totala: @Model.Cos.Masina.MasaTotala </div>
+							<div class="mt-2" ><img src="~/Imagini/Icons/Year.png" style="width:20px" /> An fabricatie: @Model.Cos.Masina.AnFabricatie </div>
+						</div>
+					</div>
+				</div>		
+			</div>
+			<div class="card m-2 p-5">
+				<h3 class="py-2">Informatii client</h3>
+							<div class="row">
+							<div class="form-floating my-1 col-6">
+									<label>Nume</label>
+									<input asp-for="@Model.Client.Nume" class="form-control input-line" />
+									<span asp-validation-for="@Model.Client.Nume" class="text-danger"></span>
+							</div>
+							<div class="form-floating my-1 col-6">
+									<label>Prenume</label>
+									<input asp-for="@Model.Client.Prenume" class="form-control input-line" />
+									<span asp-validation-for="@Model.Client.Prenume" class="text-danger"></span>
+							</div>
+							<div class="form-floating my-1 col-12">
+									<label>Adresa</label>
+									<input asp-for="@Model.Client.Adresa" class="form-control input-line" />
+									<span asp-validation-for="@Model.Client.Adresa" class="text-danger"></span>
+							</div>
+							
+							<div class="form-floating col-6 my-1">
+									<label>Oras</label>
+									<input asp-for="@Model.Client.Oras" class="form-control input-line" />
+									<span asp-validation-for="@Model.Client.Oras" class="text-danger"></span>
+							</div>
+							<div class="form-floating col-6 my-1">
+									<label>Judet</label>
+									<input asp-for="@Model.Client.Judet" class="form-control input-line" />
+									<span asp-validation-for="@Model.Client.Judet" class="text-danger"></span>
+							</div>
+							<div class="form-floating col-6 my-1">
+									<label>Cod postal</label>
+									<input asp-for="@Model.Client.CodPostal" class="form-control input-line" />
+									<span asp-validation-for="@Model.Client.CodPostal" class="text-danger"></span>
+							</div>
+							<div class="form-floating col-6 my-1">
+									<label>Telefon</label>
+									<input asp-for="@Model.Client.Telefon" class="form-control input-line" />
+									<span asp-validation-for="@Model.Client.Telefon" class="text-danger"></span>
+							</div>
+							<div class="form-floating col-12 my-1">
+									<label>CNP</label>
+									<input asp-for="@Model.DateConfidentiale.CNP" class="form-control input-line" />
+									<span asp-validation-for="@Model.DateConfidentiale.CNP" class="text-danger"></span>
+							</div>
+							<div class="form-floating col-6 my-1">
+									<label>Serie CI</label>
+									<input asp-for="@Model.DateConfidentiale.SerieCI" class="form-control input-line" />
+									<span asp-validation-for="@Model.DateConfidentiale.SerieCI" class="text-danger"></span>
+							</div>
+							<div class="form-floating col-6 my-1">
+
+									<label>Numar CI</label>
+									<input asp-for="@Model.DateConfidentiale.NumarCI" class="form-control input-line" />
+									<span asp-validation-for="@Model.DateConfidentiale.NumarCI" class="text-danger"></span>
+							</div>
+							</div>
+					
+				
+			</div>
+			<button class="btn btn-primary mt-2 mx-2" type="submit">Finalizeaza comanda</button>
+			<button class="btn btn-secondary mt-2 mx-2" asp-area="Client" asp-controller="Home" asp-action="CatalogMasini">Inapoi la catalog</button>
+		</div>
+		<div class="col-3">
+			<div class="card m-2 p-4">
+				<h5 class="fw-bold">Perioada inchiriere</h5>
+				<hr />
+				<p>Ridicare</p> 
+				<p><i class="bi bi-geo-alt"></i>&ensp; @Model.Cos.Locatie.DenumireLocatie</p>
+				<p><i class="bi bi-calendar4-week"></i>&ensp;@Model.Cos.DataInceput.ToString("dddd, dd MMMM yyyy")</p>
+				<hr />
+				<p>Predare</p>
+				<p><i class="bi bi-geo-alt"></i>&ensp; @Model.Cos.Locatie.DenumireLocatie</p>
+				<p><i class="bi bi-calendar4-week"></i>&ensp;@Model.Cos.DataSfarsit.ToString("dddd, dd MMMM yyyy")</p>
+			</div>
+			<div class="card m-2 p-4">
+				<h5 class="fw-bold">Costuri</h5>
+				<hr />
+				<p class="d-flex justify-content-between"><span>Numar de zile</span> &ensp; <span>@Model.Cos.NumarZile</span></p>
+				<p class="d-flex justify-content-between"><span>Tarif pe zi</span> &ensp;<span>@(Model.Cos.TarifTotal/Model.Cos.NumarZile) RON</span></p>
+				<hr />
+				<p class="d-flex justify-content-between"><span>Total de plata</span> &ensp; <span>@Model.Cos.TarifTotal RON</span></p>
+			</div>
+			<div class="card m-2 p-4">
+				<h6 class="fs-5"><i class="bi bi-hand-thumbs-up"></i>Cel mai bun pret!</h6>
+				<p class="fs-6">Ați obținut cea mai bună ofertă cu o marcă populară pe baza a 1603 de recenzii.</p>
+				<hr />
+				<h6 class="fs-5"><i class="bi bi-emoji-smile"></i>Staff prietenos!</h6>
+				<p class="fs-6">Bucurați-vă de servicii rapide și personal prietenos cu RentalX în Timișoara.</p>
+				<hr />
+				<h6 class="fs-5"><i class="bi bi-trophy"></i>Cel mai bine cotat!</h6>
+				<p class="fs-6">Ai ales cea mai bună firmă de închirieri auto din Timișoara.</p>
+			</div>
+		</div>
+		
+
+
+	</div>
+	</div>
+
+</form>

@@ -1,0 +1,122 @@
+﻿@model InchirieriMasini.Models.ViewModels.DashboardVM
+
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <div class="card p-5 m-2 text-center d-flex flex-column" style="height:180px;background-color:#7732F1;color:white;font-size:2em;font-weight:700;border-radius:25px">
+                <h6 class="mb-3">Numar clienti</h6>
+                <h3>@Model.numarClienti </h3>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card p-5 m-2 text-center d-flex flex-column" style="height:180px;background-color:#29CBC0;color:white;font-size:2em;font-weight:700;border-radius:25px">
+                <h6 class="mb-3">Total comenzi</h6>
+                <h3>@Model.totalTranzactii</h3>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card p-5 m-2 text-center d-flex flex-column" style="height:180px;background-color:#3A6AF0;color:white;font-size:2em;font-weight:700;border-radius:25px">
+                <h6 class="mb-3">Venit mediu per client</h6>
+                <h3>@Math.Round(Model.venitMediuPerClient,2) RON </h3>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card p-5 m-2 text-center d-flex flex-column" style="height:180px;background-color:#4E4E62;color:white;font-size:2em;font-weight:700;border-radius:25px">
+                <h6 class="mb-3">Cea mai inchiriata masina</h6>
+                <h3>@Model.ceaMaiInchiriataMasina </h3>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <div class="card m-2 text-center d-flex flex-column justify-content-between" style="height:240px">
+                <h5 class="p-2 mt-2" style="font-size:1em; font-weight:700">Total incasari</h5>
+                <h3 class="p-1" style="font-size:2em; font-weight:700">@Model.totalIncasari RON </h3>
+                <img class="img-fluid" style="width:100%" src="~/Imagini/Icons/Bars.png" />
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card m-2 text-center d-flex flex-column justify-content-between" style="height:240px">
+                <h5 class="p-2 mt-2" style="font-size:1em; font-weight:700">Media unei sesiuni de inchiriere</h5>
+                <h3 class="p-1" style="font-size:2em; font-weight:700">@Math.Round(Model.medieZileInchiriere,2) Zile </h3>
+                <img class="img-fluid" style="width:100%" src="~/Imagini/Icons/MultiSpline.png" />
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card m-2 text-center d-flex flex-column justify-content-between" style="height:240px">
+                <h5 class="p-2 mt-2" style="font-size:1em; font-weight:700">Valoare medie comanda</h5>
+                <h3 class="p-1" style="font-size:2em; font-weight:700">@Math.Round(Model.valoareMedieComanda,2) RON   </h3>
+                <img class="img-fluid" style="width:100%" src="~/Imagini/Icons/Spline.png" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+        <div class="col-8">
+            <div class="card p-2  m-2">
+                <partial name="GraficVanzari"></partial>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card  p-2 m-2">
+                <partial name="GraphicPie"></partial>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="p-5 card m-2" style="font-size:0.9em">
+                <h4 class="text-primary mb-3"> Comenzi </h4>
+                <table id="tableComenzi" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID Comanda</th>
+                            <th>Email</th>
+                            <th>ID Masina</th>
+                            <th>Data inchiriere</th>
+                            <th>Durata</th>
+                            <th>Status plata</th>
+                            <th>Data comanda</th>
+                            <th>Total comanda</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/Comanda.js"></script>
+    <script type="text/javascript">
+        {
+
+            var chart = new CanvasJS.Chart("chartContainer3", {
+                theme: "light2",
+                animationEnabled: false,
+                title: {
+                    text: "Venituri"
+                },
+                data: [
+                    {
+                        type: "area",
+                        dataPoints: [
+                            { label: "21 aug", y: 974 },
+                            { label: "22 aug", y: 415 },
+                            { label: "23 aug", y: 792 },
+                            { label: "24 aug", y: 990 },
+                            { label: "25 aug", y: 828 },
+                            { label: "26 aug", y: 2105 },
+                            { label: "27 aug", y: 1457.75 },
+                            { label: "28 aug", y: 1662 },
+                            { label: "29 aug", y: 654.5 },
+                            { label: "30 aug", y: 345 }
+                        ]
+                    }
+                ]
+            });
+            chart.render();
+
+        }
+    </script>
+}

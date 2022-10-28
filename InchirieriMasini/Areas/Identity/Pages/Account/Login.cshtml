@@ -1,0 +1,58 @@
+﻿@page
+@model LoginModel
+
+<div class="row" style="min-height:100vh">
+    <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12">
+         <a asp-area="Client" asp-controller="Home" asp-action="Index" style="text-decoration:none;">  <p class="fs-2 m-4 text-dark" style="max-width:300px"> RentalX.</p></a>
+   
+        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="m-5 mt-0 p-5 row justify-content-center align-content-center">
+            <p class="fs-2 fw-bold text-dark">Logare</p>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+   
+            <div class="form-floating py-2 mt-2">
+                <input asp-for="Input.Email" class="form-control  input-line" aria-required="true" />
+                <label asp-for="Input.Email"></label>
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+          
+            <div class="form-floating py-2 mt-2">
+                <input asp-for="Input.Password" class="form-control  input-line" aria-required="true" />
+                <label asp-for="Input.Password"></label>
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+
+                    <div>
+                    <div class="checkbox">
+                        <label asp-for="Input.RememberMe" class="form-label">
+                            <input class="form-check-input" asp-for="Input.RememberMe" />
+                            @Html.DisplayNameFor(m => m.Input.RememberMe)
+                        </label>
+                    </div>
+                </div>
+
+           
+            <div class="text-end">
+            <button id="registerSubmit" type="submit" class="btn btn-custom mt-3">Logare</button>
+         
+            </div>
+               <p>
+                  <a id="forgot-password" asp-page="./ForgotPassword" style="text-decoration:none;">Ai uitat parola?</a>
+               </p>
+               <p>
+                  <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" style="text-decoration:none;">Nu ai cont? <span class="fw-bold text-body"> Inregistreaza-te!</span></a>
+               </p>
+        </form>
+    </div>
+
+@*         <div class="col-6 d-flex flex-column  justify-content-center ">
+          <p class="fs-1 text-white">Bine ați venit la</p>
+          <p class="fs-1 fw-bold text-white">ShoeTique!</p>
+          <p  class="fs-3 text-white ms-5 ps-5" >Să începem!</p>
+         </div>*@
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

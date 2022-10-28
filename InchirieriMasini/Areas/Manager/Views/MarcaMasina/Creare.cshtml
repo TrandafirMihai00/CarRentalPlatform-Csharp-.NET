@@ -1,0 +1,32 @@
+﻿@model MarcaMasina
+
+<form method="post">
+    <div class="border p-3 mr-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Adauga Marca</h2>
+            <hr />
+        </div>
+        <div class="mb-3 ">
+            <label asp-for="DenumireMarca"></label>
+            <input asp-for="DenumireMarca"/>
+            <span asp-validation-for="DenumireMarca" class="text-danger"></span>
+        </div>
+        <div class="mb-3 ">
+            <label asp-for="LogoURL"></label>
+            <input asp-for="LogoURL"/>
+            <span asp-validation-for="LogoURL" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Adauga</button>
+        <a asp-controller="MarcaMasina" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Inapoi
+        </a>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}
+
+

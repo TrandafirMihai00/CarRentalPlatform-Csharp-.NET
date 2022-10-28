@@ -1,0 +1,90 @@
+﻿@model Masina
+<input asp-for="IdMasina" hidden />
+<form method="post">
+    <div class="border p-3 mr-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Elimina masina</h2>
+            <hr />
+        </div>
+        <div class="mb-3 ">
+            <label asp-for="ModelMasina"></label>
+            <input asp-for="ModelMasina" disabled/>
+            <span asp-validation-for="ModelMasina" class="text-danger"></span>
+        </div>
+        <div class="mb-3 ">
+            <label asp-for="ImagineMasina1"></label>
+            <input asp-for="ImagineMasina1" disabled/>
+            <span asp-validation-for="ImagineMasina1" class="text-danger"></span>
+        </div>
+        <div class="mb-3 ">
+            <label asp-for="AnFabricatie"></label>
+            <input asp-for="AnFabricatie" disabled/>
+            <span asp-validation-for="AnFabricatie" class="text-danger"></span>
+        </div>
+        <div class="mb-3 ">
+            <label asp-for="DisponibilitateMasina"></label>
+            <select asp-for="DisponibilitateMasina" disabled>
+                <option value="True">Disponibila</option>
+                <option value="False">Indisponibila</option>
+            </select>
+            <span asp-validation-for="DisponibilitateMasina" class="text-danger"></span>
+        </div>
+        <div class="mb-3 ">
+            <label asp-for="NumarInmatriculare"></label>
+            <input asp-for="NumarInmatriculare" disabled/>
+            <span asp-validation-for="NumarInmatriculare" class="text-danger"></span>
+        </div>
+        <div class="mb-3 ">
+            <label asp-for="TipCombustibil"></label>
+            <select asp-for="TipCombustibil" disabled>
+                <option value="Benzina">Benzina</option>
+                <option value="Diesel">Diesel</option>
+                <option value="Hibrid">Hibrid</option>
+                <option value="Electic">Electric</option>
+            </select>
+            <span asp-validation-for="TipCombustibil" class="text-danger"></span>
+        </div>
+        <div class="mb-3 ">
+            <label asp-for="NumarUsi"></label>
+            <select asp-for="NumarUsi" disabled>
+                <option value="2">2</option>
+                <option value="4">4</option>
+            </select>
+            <span asp-validation-for="NumarUsi" class="text-danger"></span>
+        </div>
+        <div class="mb-3 ">
+            <label asp-for="TipCutieViteza"></label>
+            <select asp-for="TipCutieViteza" disabled>
+                <option value="Manuala">Manuala</option>
+                <option value="Automata">Automata</option>
+            </select>
+            <span asp-validation-for="TipCutieViteza" class="text-danger"></span>
+        </div>
+        <div class="mb-3 ">
+            <label asp-for="MasaTotala"></label>
+            <input asp-for="MasaTotala" disabled/>
+            <span asp-validation-for="MasaTotala" class="text-danger"></span>
+        </div>
+        <div class="mb-3 ">
+            <label asp-for="TarifPeZi"></label>
+            <input asp-for="TarifPeZi"/>
+            <span asp-validation-for="TarifPeZi" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:150px">Elimina</button>
+        <a asp-controller="Masina" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Inapoi
+        </a>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}
+
+
+
+
+

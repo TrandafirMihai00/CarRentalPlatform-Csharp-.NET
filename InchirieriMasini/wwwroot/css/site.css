@@ -1,0 +1,103 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+.btn-secondary {
+    background-color: #f7f7f9 !important;
+}
+.header{
+    font-size:3rem;
+    font-weight:700;
+}
+
+.mainbg{
+    background-image:url("../Imagini/HomePage/Main.png");
+    background-position:left;
+    background-size:cover;
+    background-repeat:no-repeat;
+    min-height:100vh;
+}
+
+.input-line {
+    border: none !important;
+    border-bottom: 1px solid gray !important;
+    padding-left: none;
+    border-radius: 0;
+    background-color: rgba(0, 0, 255, 0.0);
+}
+
+    .input-line:focus {
+        box-shadow: none;
+    }
+
+.form-floating > label {
+    padding: 0.5rem 0.5rem !important;
+}
+
+
+.heading-startup > p {
+    max-width: 400px;
+}
+
+.btn-custom {
+    border-radius: 30px;
+    border: none;
+    max-width: 150px;
+    color: white;
+    background: #46509E; 
+}
+
+    .btn-custom:hover {
+        background-color: #6d75b4;
+        color: white;
+    }
+
+
+.navbar {
+    padding: 0;
+}
+
+/*Date time picker*/
+.container {
+    padding-top: 30px;
+}
+
+.ppDate {
+    height: 38px;
+    font-size: 12px;
+    padding-left: 6px;
+}
+
+    .ppDate::-webkit-inner-spin-button,
+    .ppDate::-webkit-calendar-picker-indicator {
+        display: none;
+        -webkit-appearance: none;
+    }
+
+    .ppDate:focus::-webkit-calendar-picker-indicator, .ppDate:hover::-webkit-calendar-picker-indicator {
+        display: block;
+        -webkit-appearance: menulist;
+    }
+
+    .ppDate::-webkit-clear-button {
+        display: none;
+        -webkit-appearance: none;
+    }
+
+.constrained {
+    max-width: 160px;
+}
